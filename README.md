@@ -1,33 +1,26 @@
-# agentshield
+# AgentShield
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+**AI Crypto Agent Security Guard** — a firewall that simulates, scores, and blocks risky transactions before an AI agent ever signs them.
 
-## Built with v0
+## What it does
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+AgentShield inspects every transaction an autonomous agent proposes. If it looks malicious (e.g. an unlimited token approval to an unverified contract), it's blocked automatically — and the user gets an instant plain-English explanation via a live dashboard and a Telegram alert with Reject/Allow buttons.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_h14u1nnyheDnqSLbamHnXGqK1ICp)
+## Team
 
-## Getting Started
+- **Member 1** — AI Explainer (turns blocked transactions into plain-English warnings)
+- **Member 2** — Security Rules (`securityChecker.js` — the core detection logic)
+- **Member 3** — Telegram Bot (`lib/telegramAlert.js` — sends real-time alerts with action buttons)
+- **Member 4** — Dashboard & Pitch (Next.js live threat console + demo buttons)
 
-First, run the development server:
+## How it works
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. A test transaction is triggered (via the dashboard's demo buttons — no crypto wallet required)
+2. `lib/securityChecker.js` scores it for risk
+3. If blocked, the AI Explainer generates a plain-English reason
+4. `lib/telegramAlert.js` sends a Telegram alert with Reject / Allow Anyway buttons
+5. The dashboard's Live Activity Feed shows the result in real time
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+Next.js, Tailwind CSS, Telegram Bot API, deployed on Vercel.
